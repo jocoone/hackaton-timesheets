@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { TimesheetDataComponent } from './components/timesheet-data/timesheet-data.component';
 import { TimesheetService } from './services/timesheet.service';
+import { ProjectActivityDataComponent } from './components/project-activity-data/project-activity-data.component';
 
 @NgModule({
-  declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent],
+  declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent, ProjectActivityDataComponent],
   imports: [CommonModule, RouterModule, DatepickerModule.forRoot(), FormsModule, HttpModule],
   providers: [TimesheetSandbox, TimesheetService]
 })

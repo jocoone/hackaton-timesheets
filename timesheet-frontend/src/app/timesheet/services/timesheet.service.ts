@@ -27,7 +27,7 @@ export class TimesheetService {
     return this.http.get('http://localhost:8080/activities', {search: params})
       .map(response => response.json())
       .map((activities: Array<Activity>) => {
-        const groupedActivities = _.groupBy(activities, 'project.id');
+        const groupedActivities = _.groupBy(activities, (activity: Activity) => activity.project ? activity.project.id : 'nb');
         const result = [];
         _.keys(groupedActivities).forEach((project) => {
           result.push(new ProjectActivity(groupedActivities[project][0].project, groupedActivities[project]));

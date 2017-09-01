@@ -13,8 +13,8 @@ export class LoginComponent {
   login: EventEmitter<User> = new EventEmitter();
 
   loginForm = new FormGroup ({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    username: new FormControl('samvda', [Validators.required]),
+    password: new FormControl('amlkqsjdmf', [Validators.required])
   });
 
   loginUser(user: User) {
