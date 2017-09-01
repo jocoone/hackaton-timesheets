@@ -12,7 +12,7 @@ import java.util.List;
 public class ProjectController {
 
     @RequestMapping
-    public List<Project> getProjects(@RequestParam int weekNumber, @RequestParam String userName){
-
+    public List<Project> getProjects(@RequestParam final int weekNumber, @RequestParam final String userName) {
+        return null;
     }
 }
