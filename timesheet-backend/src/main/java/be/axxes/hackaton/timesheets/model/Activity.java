@@ -46,7 +46,8 @@ public abstract class Activity {
 		this.type = type;
 	}
 	public void setDuration(int duration) {
-		this.duration = duration==0? this.getType().getDefaultDuration(): duration;
+		this.duration=50;
+		//this.duration = duration==0? this.getType().getDefaultDuration(): duration;
 	}
 	public void setDate(Date date) {
 		this.date = date;

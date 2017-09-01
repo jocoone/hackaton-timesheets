@@ -1,11 +1,7 @@
 package be.axxes.hackaton.timesheets;
 
-import be.axxes.hackaton.timesheets.dao.ActivityTypeDao;
-import be.axxes.hackaton.timesheets.dao.ProjectDao;
-import be.axxes.hackaton.timesheets.dao.UserDao;
-import be.axxes.hackaton.timesheets.model.ActivityType;
-import be.axxes.hackaton.timesheets.model.Project;
-import be.axxes.hackaton.timesheets.model.User;
+import java.util.Date;
+
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +9,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+
+import be.axxes.hackaton.timesheets.dao.ActivityTypeDao;
+import be.axxes.hackaton.timesheets.dao.ProjectDao;
+import be.axxes.hackaton.timesheets.dao.UserDao;
+import be.axxes.hackaton.timesheets.model.Activity;
+import be.axxes.hackaton.timesheets.model.ActivityType;
+import be.axxes.hackaton.timesheets.model.BillableActivity;
+import be.axxes.hackaton.timesheets.model.NonBillableActivity;
+import be.axxes.hackaton.timesheets.model.Project;
+import be.axxes.hackaton.timesheets.model.User;
 
 @SpringBootApplication
 public class TimesheetsApplication {
@@ -53,6 +59,28 @@ public class TimesheetsApplication {
         project.setStartDate(DateTime.parse("2017-9-2").toDate());
         project.setEndDate(DateTime.parse("2018-2-5").toDate());
         projectDao.save(project);
+        
+        
+        BillableActivity billableActivity = new BillableActivity();
+        billableActivity.setDate(new Date());
+        billableActivity.setDuration(0);
+        billableActivity.setUser(user);
+        billableActivity.setProject(project);
+        ActivityType activityTypeBillable = new ActivityType();
+        activityTypeBillable.setBillable(true);
+        billableActivity.setType(activityTypeBillable);
+        
+        
+        Activity nonBillableActivity = new NonBillableActivity();
+        ActivityType activityType = new ActivityType();
+        activityType.setBillable(false);
+        activityType.setName("Axxes Beach");
+        activityType.setDefaultDuration(700);
+        activityType.setDescription("Hacking on the beach");
+        nonBillableActivity.setType(activityType);
+        nonBillableActivity.setUser(user);
+        nonBillableActivity.setDate(new Date());
+        nonBillableActivity.setDuration(200);
 
 
         LOGGER.info("Done loading test data");
