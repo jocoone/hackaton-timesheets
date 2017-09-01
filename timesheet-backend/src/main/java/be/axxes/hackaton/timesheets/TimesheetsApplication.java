@@ -1,6 +1,5 @@
 package be.axxes.hackaton.timesheets;
 
-<<<<<<< HEAD
 import java.util.Date;
 
 import org.joda.time.DateTime;
@@ -12,8 +11,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
 import be.axxes.hackaton.timesheets.dao.ActivityDao;
-=======
->>>>>>> 585b2053e68930e4bdff66687a2acfa308e00818
+
 import be.axxes.hackaton.timesheets.dao.ActivityTypeDao;
 import be.axxes.hackaton.timesheets.dao.ProjectDao;
 import be.axxes.hackaton.timesheets.dao.UserDao;
