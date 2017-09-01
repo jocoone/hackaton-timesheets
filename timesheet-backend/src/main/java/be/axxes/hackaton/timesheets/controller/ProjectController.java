@@ -13,6 +13,6 @@ public class ProjectController {
 
     @RequestMapping
     public List<Project> getProjects(@RequestParam int weekNumber, @RequestParam String userName){
-
+return null;
     }
 }
