@@ -19,10 +19,15 @@ public abstract class Activity {
 	private Date date;
 	
 	@ManyToOne
-	private Project project;
-	
-	@ManyToOne
 	private User user;
+	
+	public void setId(Long id){
+		this.id = id;
+	}
+	
+	public Long getId(){
+		return id;
+	}
 	
 	public ActivityType getType() {
 		return type;
@@ -33,9 +38,7 @@ public abstract class Activity {
 	public Date getDate() {
 		return date;
 	}
-	public Project getProject() {
-		return project;
-	}
+
 	public User getUser(){
 		return user;
 	}
@@ -48,9 +51,7 @@ public abstract class Activity {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public void setProject(Project project) {
-		this.project = project;
-	}
+
 	public void setUser(User user){
 		this.user = user;
 	}	

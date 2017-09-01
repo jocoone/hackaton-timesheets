@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface ProjectService {
 
+    Project getById(long id);
+
     List<Project> getProjectsByUser(User user);
 
     List<Project> getProjectsByUserAndWeek(User user, Date fromDate, Date toDate);

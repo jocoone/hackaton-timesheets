@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import be.axxes.hackaton.timesheets.dao.ActivityDao;
 import be.axxes.hackaton.timesheets.model.Activity;
+import be.axxes.hackaton.timesheets.model.ActivityType;
 import be.axxes.hackaton.timesheets.model.User;
 import be.axxes.hackaton.timesheets.util.DateRange;
 
@@ -19,5 +20,15 @@ public class ActivityServiceImpl implements ActivityService  {
 		Date to = range.getToDate();
 		return activityDao.findByDateBetween(from, to);
 	}
+	
+    @Override
+    public Activity create(final Activity activity) {
+        return activityDao.save(activity);
+    }
+
+    @Override
+    public void update(final Activity activity) {
+        activityDao.save(activity);
+    }
 
 }

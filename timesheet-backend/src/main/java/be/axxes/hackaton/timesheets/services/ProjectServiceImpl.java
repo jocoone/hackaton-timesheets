@@ -15,14 +15,18 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectDao projectDao;
 
+    @Override
+    public Project getById(final long id) {
+        return projectDao.findOne(id);
+    }
 
     @Override
-    public List<Project> getProjectsByUser(User user) {
+    public List<Project> getProjectsByUser(final User user) {
         return projectDao.findProjectByUser(user);
     }
 
     @Override
-    public List<Project> getProjectsByUserAndWeek(User user, Date fromDate, Date toDate) {
+    public List<Project> getProjectsByUserAndWeek(final User user, final Date fromDate, final Date toDate) {
         return projectDao.findProjectByUserAndStartDateLessThanEqualAndEndDateGreaterThanEqual(user, toDate, fromDate);
     }
 }
