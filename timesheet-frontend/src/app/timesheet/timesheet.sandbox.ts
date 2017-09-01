@@ -7,13 +7,13 @@ import { ApplicationState } from '../state/state/application-state';
 export class TimesheetSandbox {
 
   projects$ = this.store.select(state => state.timesheet.projects);
+  user$ = this.store.select(state => state.user.user);
 
   constructor(private store: Store<ApplicationState>,
-              private timesheetService: TimesheetService) {
-  }
+              private timesheetService: TimesheetService) {}
 
-  getProjects() {
-    this.timesheetService.getProjects('samvda', 2017, 35)
+  getProjects(username: string) {
+    this.timesheetService.getProjects(username, 2017, 35)
       .subscribe(projects => this.store.dispatch({type: 'SET_PROJECTS', payload: projects}));
   }
 }
