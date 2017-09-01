@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,12 +6,16 @@ import * as moment from 'moment';
   templateUrl: './date-selector.component.html',
   styleUrls: ['./date-selector.component.scss']
 })
-export class DateSelectorComponent {
+export class DateSelectorComponent implements OnInit {
 
   @Output() selectedWeek = new EventEmitter();
 
   beginOfMonth = new Date();
   weeks = this.getWeeksInMonth(this.beginOfMonth);
+
+  ngOnInit() {
+    this.selectedWeek.emit(this.weeks[0]);
+  }
 
   dateChanged(beginOfMonth: any) {
     this.weeks = this.getWeeksInMonth(beginOfMonth);
@@ -39,7 +43,6 @@ export class DateSelectorComponent {
   }
 
   selectWeek(week) {
-    console.log(week);
     this.selectedWeek.emit(week);
   }
 }
