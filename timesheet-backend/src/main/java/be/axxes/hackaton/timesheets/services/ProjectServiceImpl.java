@@ -23,6 +23,6 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getProjectsByUserAndWeek(User user, Date fromDate, Date toDate) {
-        return projectDao.findProjectByUserAndStartDateLessThanEqualAndEndDateGreaterThanEqual(user, fromDate, toDate);
+        return projectDao.findProjectByUserAndStartDateLessThanEqualAndEndDateGreaterThanEqual(user, toDate, fromDate);
     }
 }
