@@ -6,4 +6,7 @@ import be.axxes.hackaton.timesheets.util.DateRange;
 
 public interface ActivityService {
      Iterable<Activity> getActivities(User user, DateRange range);
+     Activity create(Activity activity);
+
+     void update(Activity activity);
 }
