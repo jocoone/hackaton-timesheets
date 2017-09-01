@@ -1,6 +1,14 @@
 :host /deep/ datepicker {
   .well {
     background: transparent;
+
+    .btn-info.active {
+      background-color: #D5941B;
+
+       span {
+         color: white;
+       }
+    }
   }
 }
 

@@ -1,7 +1,6 @@
 <div class="timesheet-data">
   <div class="col-md-9 timesheet-activities">
-    <div class="timesheet-project" *ngFor="let projectActivity of projectActivities">
-      test
-    </div>
+    <app-project-activity-data *ngFor="let projectActivity of projectActivities" [projectActivity]="projectActivity">
+    </app-project-activity-data>
   </div>
 </div>

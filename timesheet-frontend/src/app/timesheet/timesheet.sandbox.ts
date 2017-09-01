@@ -21,6 +21,6 @@ export class TimesheetSandbox {
 
   getActivities(username: string, beginOfWeek: Date) {
     this.timesheetService.getActivities(username, beginOfWeek.getFullYear(), moment(beginOfWeek).isoWeeks())
-      .subscribe(activities => console.log(activities));
+      .subscribe(activities => this.store.dispatch({type: 'SET_ACTIVITIES', payload: activities}));
   }
 }

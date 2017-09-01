@@ -1,10 +1,11 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
   selector: 'app-date-selector',
   templateUrl: './date-selector.component.html',
-  styleUrls: ['./date-selector.component.scss']
+  styleUrls: ['./date-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateSelectorComponent implements OnInit {
 
@@ -20,6 +21,7 @@ export class DateSelectorComponent implements OnInit {
 
   dateChanged(beginOfMonth: any) {
     this.weeks = this.getWeeksInMonth(beginOfMonth);
+    this.week = this.weeks[0];
   }
 
   getWeeksInMonth(beginOfMonth) {
