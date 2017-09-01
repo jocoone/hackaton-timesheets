@@ -8,6 +8,7 @@ import { AppRoutes } from './app.routes';
 import { LoginModule } from './login/login.module';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './state/root.reducer';
+import { TimesheetModule } from './timesheet/timesheet.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { rootReducer } from './state/root.reducer';
 
     StoreModule.provideStore(rootReducer),
 
-    LoginModule
+    LoginModule, TimesheetModule
   ],
   providers: [],
   bootstrap: [AppComponent]

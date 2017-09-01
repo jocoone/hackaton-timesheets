@@ -1,0 +1,6 @@
+<div class="date-selector">
+  <datepicker [(ngModel)]="beginOfMonth" (activeDateChange)="dateChanged($event)" [showWeeks]="true" [datepickerMode]="'month'" [minMode]="'month'" [showWeeks]="true"></datepicker>
+  <div *ngFor="let week of weeks; let index = index" class="week">
+    {{index + 1}}
+  </div>
+</div>
