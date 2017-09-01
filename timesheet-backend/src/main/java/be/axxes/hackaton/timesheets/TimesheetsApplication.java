@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
+import be.axxes.hackaton.timesheets.dao.ActivityDao;
 import be.axxes.hackaton.timesheets.dao.ActivityTypeDao;
 import be.axxes.hackaton.timesheets.dao.ProjectDao;
 import be.axxes.hackaton.timesheets.dao.UserDao;
@@ -40,6 +41,8 @@ public class TimesheetsApplication {
         activityTypeDao.save(new ActivityType());
 
         UserDao userDao = event.getApplicationContext().getBean(UserDao.class);
+        ActivityDao activityDao = event.getApplicationContext().getBean(ActivityDao.class);
+
 
         User user = new User("samvda");
         userDao.save(user);
@@ -63,12 +66,14 @@ public class TimesheetsApplication {
         
         BillableActivity billableActivity = new BillableActivity();
         billableActivity.setDate(new Date());
-        billableActivity.setDuration(0);
+        billableActivity.setDuration(100);
         billableActivity.setUser(user);
         billableActivity.setProject(project);
         ActivityType activityTypeBillable = new ActivityType();
         activityTypeBillable.setBillable(true);
+        activityTypeDao.save(activityTypeBillable);
         billableActivity.setType(activityTypeBillable);
+        activityDao.save(billableActivity);
         
         
         Activity nonBillableActivity = new NonBillableActivity();
@@ -77,10 +82,12 @@ public class TimesheetsApplication {
         activityType.setName("Axxes Beach");
         activityType.setDefaultDuration(700);
         activityType.setDescription("Hacking on the beach");
+        activityTypeDao.save(activityType);
         nonBillableActivity.setType(activityType);
         nonBillableActivity.setUser(user);
         nonBillableActivity.setDate(new Date());
         nonBillableActivity.setDuration(200);
+        activityDao.save(nonBillableActivity);
 
 
         LOGGER.info("Done loading test data");
