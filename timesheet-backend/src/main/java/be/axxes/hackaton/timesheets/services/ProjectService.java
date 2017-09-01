@@ -13,4 +13,6 @@ public interface ProjectService {
     List<Project> getProjectsByUser(User user);
 
     List<Project> getProjectsByUserAndWeek(User user, Date fromDate, Date toDate);
+
+    Project create(Project project);
 }

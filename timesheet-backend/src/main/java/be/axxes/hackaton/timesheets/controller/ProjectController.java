@@ -6,12 +6,12 @@ import be.axxes.hackaton.timesheets.services.ProjectService;
 import be.axxes.hackaton.timesheets.services.UserService;
 import be.axxes.hackaton.timesheets.util.DateRange;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.Calendar;
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -35,6 +35,28 @@ public class ProjectController {
 
 
         return projectService.getProjectsByUserAndWeek(user, dateRange.getFromDate(), dateRange.getToDate());
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> createProject(final HttpServletRequest request, @RequestBody final CreateProjectDto createProjectDto){
+        Project project = new Project();
+
+        project.setUser(userService.getById(createProjectDto.getUserId()));
+
+        project.setProjectName(createProjectDto.getProjectName());
+        project.setDescription(createProjectDto.getDescription());
+        project.setStartDate(createProjectDto.getStartDate());
+        project.setEndDate(createProjectDto.getEndDate());
+        project.setMaxHours(createProjectDto.getMaxHours());
+
+        Project createdProject = projectService.create(project);
+
+        URI location = ServletUriComponentsBuilder.fromContextPath(request)
+                .path("/projects/{id}")
+                .buildAndExpand(createdProject.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
 
 
