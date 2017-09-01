@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -7,6 +7,8 @@ import * as moment from 'moment';
   styleUrls: ['./date-selector.component.scss']
 })
 export class DateSelectorComponent {
+
+  @Output() selectedWeek = new EventEmitter();
 
   beginOfMonth = new Date();
   weeks = this.getWeeksInMonth(this.beginOfMonth);
@@ -34,5 +36,10 @@ export class DateSelectorComponent {
     })
 
     return weeks;
+  }
+
+  selectWeek(week) {
+    console.log(week);
+    this.selectedWeek.emit(week);
   }
 }
