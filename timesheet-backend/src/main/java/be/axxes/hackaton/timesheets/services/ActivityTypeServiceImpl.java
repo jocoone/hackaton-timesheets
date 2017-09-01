@@ -12,6 +12,11 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
     private ActivityTypeDao activityTypeDao;
 
     @Override
+    public ActivityType getById(final long id) {
+        return activityTypeDao.findOne(id);
+    }
+
+    @Override
     public Iterable<ActivityType> getNonBillableActivities() {
         return activityTypeDao.findAll();
     }
