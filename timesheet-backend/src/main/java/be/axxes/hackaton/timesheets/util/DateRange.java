@@ -35,4 +35,12 @@ public class DateRange {
 
         return  new DateRange(dateBeginWeek, dateEndWeek);
     }
+
+    @Override
+    public String toString() {
+        return "DateRange{" +
+                "fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                '}';
+    }
 }

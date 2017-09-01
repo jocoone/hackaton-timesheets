@@ -1,7 +1,12 @@
 package be.axxes.hackaton.timesheets;
 
 import be.axxes.hackaton.timesheets.dao.ActivityTypeDao;
+import be.axxes.hackaton.timesheets.dao.ProjectDao;
+import be.axxes.hackaton.timesheets.dao.UserDao;
 import be.axxes.hackaton.timesheets.model.ActivityType;
+import be.axxes.hackaton.timesheets.model.Project;
+import be.axxes.hackaton.timesheets.model.User;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +32,28 @@ public class TimesheetsApplication {
         activityTypeDao.save(new ActivityType());
         activityTypeDao.save(new ActivityType());
         activityTypeDao.save(new ActivityType());
+
+        UserDao userDao = event.getApplicationContext().getBean(UserDao.class);
+
+        User user = new User("samvda");
+        userDao.save(user);
+
+        ProjectDao projectDao = event.getApplicationContext().getBean(ProjectDao.class);
+
+        Project project = new Project();
+        project.setUser(user);
+        project.setProjectName("Project 1");
+        project.setStartDate(DateTime.parse("2017-6-10").toDate());
+        project.setEndDate(DateTime.parse("2017-9-15").toDate());
+        projectDao.save(project);
+
+        project = new Project();
+        project.setProjectName("Project 2");
+        project.setUser(user);
+        project.setStartDate(DateTime.parse("2017-9-2").toDate());
+        project.setEndDate(DateTime.parse("2018-2-5").toDate());
+        projectDao.save(project);
+
 
         LOGGER.info("Done loading test data");
     }
