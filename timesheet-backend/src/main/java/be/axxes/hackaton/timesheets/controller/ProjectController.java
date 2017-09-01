@@ -31,7 +31,7 @@ public class ProjectController {
 
         DateRange dateRange = DateRange.forWeek(year, weekNumber);
 
-        System.out.print(dateRange.toString());
+        System.out.println(dateRange.toString());
 
 
         return projectService.getProjectsByUserAndWeek(user, dateRange.getFromDate(), dateRange.getToDate());
