@@ -1,8 +1,9 @@
 package be.axxes.hackaton.timesheets.model;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+
 import javax.persistence.ManyToOne;
 import java.util.Date;
 
@@ -44,5 +45,6 @@ public class Project {
     public int getMaxHours() { return maxHours; }
 
     public void setMaxHours(int maxHours) { this.maxHours = maxHours; }
+
 
 }

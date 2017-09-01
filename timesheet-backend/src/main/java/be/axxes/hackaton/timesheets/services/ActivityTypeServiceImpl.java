@@ -16,4 +16,14 @@ public class ActivityTypeServiceImpl implements ActivityTypeService {
         return activityTypeDao.findAll();
     }
 
+    @Override
+    public ActivityType create(final ActivityType activityType) {
+        return activityTypeDao.save(activityType);
+    }
+
+    @Override
+    public void update(final ActivityType activityType) {
+        activityTypeDao.save(activityType);
+    }
+
 }

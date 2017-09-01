@@ -6,4 +6,8 @@ public interface ActivityTypeService {
 
     Iterable<ActivityType> getNonBillableActivities();
 
+    ActivityType create(ActivityType activityType);
+
+    void update(ActivityType activityType);
+
 }
