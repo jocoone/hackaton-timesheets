@@ -12,6 +12,7 @@ export class DateSelectorComponent implements OnInit {
 
   beginOfMonth = new Date();
   weeks = this.getWeeksInMonth(this.beginOfMonth);
+  week = this.weeks[0];
 
   ngOnInit() {
     this.selectedWeek.emit(this.weeks[0]);
@@ -42,7 +43,12 @@ export class DateSelectorComponent implements OnInit {
     return weeks;
   }
 
-  selectWeek(week) {
+  selectWeek(week: Week) {
     this.selectedWeek.emit(week);
+    this.week = week;
   }
+}
+
+class Week {
+  constructor(readonly start: Date, readonly end: Date) {}
 }
