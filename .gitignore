@@ -4,3 +4,4 @@
 /timesheet-backend/.nb-gradle/
 .gradle/
 *.iml
+out
