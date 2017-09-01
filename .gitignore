@@ -1,1 +1,5 @@
 .idea/
+/timesheet-frontend/nbproject/private/
+/timesheet-backend/build/
+/timesheet-backend/.nb-gradle/
+.gradle/
