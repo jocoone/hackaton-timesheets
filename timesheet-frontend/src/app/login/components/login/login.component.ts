@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from '../../../state/state/UserState';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  @Output()
+  login: EventEmitter<User> = new EventEmitter();
+
+  loginForm = new FormGroup ({
+    username: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required])
+  });
+
+  loginUser(user: User) {
+    this.login.emit(new User(user.username, user.password));
+  }
 }
