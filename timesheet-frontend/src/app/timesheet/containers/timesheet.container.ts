@@ -3,6 +3,7 @@ import { TimesheetSandbox } from '../timesheet.sandbox';
 import { Observable } from 'rxjs/Observable';
 import { Project } from '../model/Project';
 import { Router } from '@angular/router';
+import { ProjectActivity } from '../model/ProjectActivity';
 
 @Component({
   selector: 'app-timesheet-container',
@@ -11,17 +12,19 @@ import { Router } from '@angular/router';
 })
 export class TimesheetContainer {
 
-  $projects: Observable<Array<Project>> = this.sb.projects$;
+  projectActivities$: Observable<Array<ProjectActivity>> = this.sb.projectActivities$;
 
   constructor(private sb: TimesheetSandbox,
-              private route: Router) {
+              private route: Router) {}
+
+  selectedWeek(selectedWeek) {
     this.sb.user$.subscribe(user => {
-      console.log(user);
       if (!user) {
         this.route.navigate(['/login']);
       } else {
-        this.sb.getProjects(user.username);
+        // this.sb.getProjects(user.username, selectedWeek.start);
+        this.sb.getActivities(user.username, selectedWeek.start);
       }
-    })
+    });
   }
 }

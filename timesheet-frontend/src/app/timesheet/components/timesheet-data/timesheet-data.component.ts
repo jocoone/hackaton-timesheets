@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Project } from '../../model/Project';
+import { ProjectActivity } from '../../model/ProjectActivity';
 
 @Component({
   selector: 'app-timesheet-data',
@@ -9,5 +10,5 @@ import { Project } from '../../model/Project';
 export class TimesheetDataComponent {
 
   @Input()
-  projects: Array<Project>;
+  projectActivities: Array<ProjectActivity>;
 }
