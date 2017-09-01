@@ -8,5 +8,7 @@ import { TimesheetSandbox } from '../timesheet.sandbox';
 })
 export class TimesheetContainer {
 
-  constructor(private sb: TimesheetSandbox) {}
+  constructor(private sb: TimesheetSandbox) {
+    this.sb.getProjects();
+  }
 }

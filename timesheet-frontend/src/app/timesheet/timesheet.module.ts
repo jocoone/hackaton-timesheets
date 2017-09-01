@@ -6,11 +6,14 @@ import { TimesheetContainer } from './containers/timesheet.container';
 import { DatepickerModule } from 'ngx-bootstrap';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { TimesheetDataComponent } from './components/timesheet-data/timesheet-data.component';
+import { TimesheetService } from './services/timesheet.service';
 
 @NgModule({
-  declarations: [TimesheetContainer, DateSelectorComponent],
-  imports: [CommonModule, RouterModule, DatepickerModule.forRoot(), FormsModule],
-  providers: [TimesheetSandbox]
+  declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent],
+  imports: [CommonModule, RouterModule, DatepickerModule.forRoot(), FormsModule, HttpModule],
+  providers: [TimesheetSandbox, TimesheetService]
 })
 export class TimesheetModule {
 
