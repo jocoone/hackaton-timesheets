@@ -1,0 +1,8 @@
+<div class="timesheet-data">
+  <div class="project-selector">
+    <select>
+      <option></option>
+      <option *ngFor="let project of projects" [value]="project.id">{{project.projectName}}</option>
+    </select>
+  </div>
+</div>

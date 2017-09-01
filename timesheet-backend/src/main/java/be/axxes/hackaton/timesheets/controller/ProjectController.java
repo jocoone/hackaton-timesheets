@@ -12,8 +12,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
@@ -24,15 +30,13 @@ public class ProjectController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping
-    public List<Project> getProjects(@RequestParam int year, @RequestParam int weekNumber, @RequestParam String username){
+    public List<Project> getProjects(@RequestParam final int year, @RequestParam final int weekNumber, @RequestParam final String username) {
         User user = userService.getUserByUsername(username);
 
         DateRange dateRange = DateRange.forWeek(year, weekNumber);
 
         System.out.println(dateRange.toString());
-
 
         return projectService.getProjectsByUserAndWeek(user, dateRange.getFromDate(), dateRange.getToDate());
     }

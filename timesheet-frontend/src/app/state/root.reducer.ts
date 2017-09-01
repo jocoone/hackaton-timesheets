@@ -4,9 +4,11 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { ApplicationState } from './state/application-state';
 import { compose } from '@ngrx/core';
 import { userReducer } from './reducers/user.reducer';
+import { timesheetReducer } from './reducers/timesheet.reducer';
 
 const reducers = {
-  user: userReducer
+  user: userReducer,
+  timesheet: timesheetReducer
 };
 
 const developmentReducer: ActionReducer<ApplicationState> = compose(storeFreeze, combineReducers)(reducers);
