@@ -10,45 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class Preset {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    private String name;
     @OneToMany(cascade = ALL)
-    private Set<Preset> presets;
-
-    private String username;
+    private Set<PresetActivity> activities;
 
     public Long getId() {
         return id;
-    }
-
-    public User() {}
-
-    public User(final String username) {
-        this.username = username;
     }
 
     public void setId(final Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(final String username) {
-        this.username = username;
+    public void setName(final String name) {
+        this.name = name;
     }
 
-    public Set<Preset> getPresets() {
-        return presets;
+    public Set<PresetActivity> getActivities() {
+        return activities;
     }
 
-    public void setPresets(final Set<Preset> presets) {
-        this.presets = presets;
+    public void setActivities(final Set<PresetActivity> activities) {
+        this.activities = activities;
     }
 
 }
