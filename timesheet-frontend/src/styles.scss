@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+$icon-font-path: '../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+$fa-font-path:   "../node_modules/font-awesome/fonts";
+
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~font-awesome/scss/font-awesome';
+
+@import '~ng2-toastr/ng2-toastr.css';
+
+body {
+  background-color: #f9f9f9;
+}
