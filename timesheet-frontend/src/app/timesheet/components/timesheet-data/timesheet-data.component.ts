@@ -14,6 +14,10 @@ export class TimesheetDataComponent {
 
   @Input()
   beginOfWeek: Date;
+
+  getNonBillable() {
+    return this.projectActivities.filter(pa => !pa.project)[0];
+  }
 }
 
 @Pipe({ name: 'timesheetFilter'})

@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Pipe, PipeTransform } from '@angular/core';
 import { ProjectActivity } from '../../model/ProjectActivity';
 import * as moment from 'moment';
+import { Activity } from '../../model/Activity';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-project-activity-data',
@@ -15,13 +17,28 @@ export class ProjectActivityDataComponent {
   @Input()
   beginOfWeek: Date;
 
-  getActivities() {
-    console.log(this.beginOfWeek);
-    console.log(this.projectActivity.activities);
-    return this.projectActivity.activities
-      .filter(a => moment(this.beginOfWeek).endOf('isoWeek').isAfter(moment(new Date(a.date)))
-        && moment(new Date(a.date)).isAfter(moment(this.beginOfWeek)));
+  getActivitiesOfDateAndFactor(date: Date, factor: number): number {
+    if (factor) {
+      const group = _.groupBy(this.projectActivity.activities, 'factor')['' + factor];
+      if (group) {
+        const x = group.filter(a => new Date(a.date).getDate() === date.getDate())[0];
+        return x ? x.duration : 0;
+      }
+    }
+    return 0;
   }
+
+  getDate(num: number) {
+    return moment(this.beginOfWeek).add(num, 'days').toDate();
+  }
+}
+
+@Pipe({name: 'roundHours'})
+export class RoundFilter implements PipeTransform {
+  transform(value: number): any {
+    return Math.round(value * 100) / 100;
+  }
+
 }
 
 

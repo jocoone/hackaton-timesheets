@@ -1,0 +1,9 @@
+<div id="selected-day">
+  <p>{{selectedDayString}}</p>
+</div>
+
+<div *ngIf="projects" id="day-details">
+  <app-project-card *ngFor="let p of projects" [project]="p"></app-project-card>
+</div>
+
+<button>+ Non Billable</button>

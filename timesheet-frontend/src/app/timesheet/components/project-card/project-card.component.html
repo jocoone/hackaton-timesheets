@@ -1,0 +1,6 @@
+<div *ngIf="project">
+  <h1>{{project.project.projectName}}</h1>
+  <app-hour-card *ngFor="let a of project.activities" [activity]="a"></app-hour-card>
+</div>
+
+

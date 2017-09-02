@@ -2,6 +2,9 @@
   <div class="col-md-9 timesheet-activities">
     <app-project-activity-data *ngFor="let projectActivity of projectActivities | timesheetFilter"
                                [projectActivity]="projectActivity"
-                               [beginOfWeek]="beginOfWeek"></app-project-activity-data>
+    [beginOfWeek]="beginOfWeek"></app-project-activity-data>
+    <app-project-activity-data *ngIf="getNonBillable()" [projectActivity]="getNonBillable()" [beginOfWeek]="beginOfWeek"></app-project-activity-data>
   </div>
+
+  <app-timesheet-metadata class="col-md-3" [projects]="projectActivities"></app-timesheet-metadata>
 </div>

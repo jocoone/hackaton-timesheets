@@ -1,0 +1,7 @@
+<div *ngIf="activity">
+  <div [ngClass]="setTypeColor()"></div>
+  <div class="hour-detail">
+    <p>{{type}}</p>
+    <p>{{activity.duration}}</p>
+  </div>
+</div>
