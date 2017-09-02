@@ -7,12 +7,13 @@ import { DatepickerModule } from 'ngx-bootstrap';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { TimesheetDataComponent } from './components/timesheet-data/timesheet-data.component';
+import { TimesheetDataComponent, TimesheetDataFilter } from './components/timesheet-data/timesheet-data.component';
 import { TimesheetService } from './services/timesheet.service';
 import { ProjectActivityDataComponent } from './components/project-activity-data/project-activity-data.component';
 
 @NgModule({
-  declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent, ProjectActivityDataComponent],
+  declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent, ProjectActivityDataComponent,
+    TimesheetDataFilter],
   imports: [CommonModule, RouterModule, DatepickerModule.forRoot(), FormsModule, HttpModule],
   providers: [TimesheetSandbox, TimesheetService]
 })
