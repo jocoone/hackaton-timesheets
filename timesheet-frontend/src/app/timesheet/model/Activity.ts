@@ -6,5 +6,6 @@ export class Activity {
               readonly date: number,
               readonly factor: number,
               readonly duration: number,
+              readonly factor: any,
               readonly project: Project) {}
 }

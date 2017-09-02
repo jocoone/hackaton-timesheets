@@ -5,4 +5,6 @@
     [beginOfWeek]="beginOfWeek"></app-project-activity-data>
     <app-project-activity-data *ngIf="getNonBillable()" [projectActivity]="getNonBillable()" [beginOfWeek]="beginOfWeek"></app-project-activity-data>
   </div>
+
+  <app-timesheet-metadata class="col-md-3" [projects]="projectActivities"></app-timesheet-metadata>
 </div>

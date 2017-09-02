@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { TimesheetDataComponent, TimesheetDataFilter } from './components/timesheet-data/timesheet-data.component';
 import { TimesheetService } from './services/timesheet.service';
-import {
-  ProjectActivityDataComponent,
-  RoundFilter
-} from './components/project-activity-data/project-activity-data.component';
+import { ProjectActivityDataComponent, RoundFilter } from './components/project-activity-data/project-activity-data.component';
+import { HourCardComponent } from './components/hour-card/hour-card.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { TimesheetMetaDataComponent } from './components/timesheet-metadata/timesheet-metadata.component';
 
 @NgModule({
   declarations: [TimesheetContainer, DateSelectorComponent, TimesheetDataComponent, ProjectActivityDataComponent,
-    TimesheetDataFilter, RoundFilter],
+    TimesheetDataFilter, HourCardComponent, ProjectCardComponent, TimesheetMetaDataComponent, RoundFilter],
   imports: [CommonModule, RouterModule, DatepickerModule.forRoot(), FormsModule, HttpModule],
   providers: [TimesheetSandbox, TimesheetService]
 })
