@@ -1,5 +1,6 @@
 <div class="project-activity">
-  <h1>{{projectActivity.project.projectName}}</h1>
+  <h1 *ngIf="projectActivity.project">{{projectActivity.project.projectName}}</h1>
+  <h1 *ngIf="!projectActivity.project">Non Billable</h1>
   <table class="data table">
     <thead>
       <tr>
@@ -16,36 +17,35 @@
     <tbody>
       <tr>
         <td>100%</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(0), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(1), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(2), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(3), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(4), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(5), 100)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(6), 100)/60 | roundHours}}</td>
       </tr>
       <tr>
         <td>150%</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(0), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(1), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(2), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(3), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(4), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(5), 150)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(6), 150)/60 | roundHours}}</td>
       </tr>
       <tr>
         <td>200%</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(0), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(1), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(2), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(3), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(4), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(5), 200)/60 | roundHours}}</td>
+        <td>{{getActivitiesOfDateAndFactor(getDate(6), 200)/60 | roundHours}}</td>
       </tr>
     </tbody>
   </table>
 
-  {{getActivities() | json}}
 </div>
