@@ -2,12 +2,21 @@
   .well {
     background: transparent;
 
-    .btn-info.active {
-      background-color: #D5941B;
+    .btn-default {
+      border-radius: 0;
+    }
 
-       span {
-         color: white;
-       }
+    .btn-info {
+      border-radius: 0;
+
+      &.active {
+        background-color: #D5941B;
+        border-color: #ccc;
+
+        span {
+          color: white;
+        }
+      }
     }
   }
 }
