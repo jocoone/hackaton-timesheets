@@ -91,6 +91,7 @@ public class TimesheetsApplication {
         activityTypeBillable.setBillable(true);
         activityTypeDao.save(activityTypeBillable);
         billableActivity.setType(activityTypeBillable);
+        billableActivity.setFactor(100);
         activityDao.save(billableActivity);
 
 
