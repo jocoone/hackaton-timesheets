@@ -11,6 +11,9 @@ export class TimesheetDataComponent {
 
   @Input()
   projectActivities: Array<ProjectActivity>;
+
+  @Input()
+  beginOfWeek: Date;
 }
 
 @Pipe({ name: 'timesheetFilter'})
