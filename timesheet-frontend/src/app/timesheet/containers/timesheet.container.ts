@@ -13,11 +13,13 @@ import { ProjectActivity } from '../model/ProjectActivity';
 export class TimesheetContainer {
 
   projectActivities$: Observable<Array<ProjectActivity>> = this.sb.projectActivities$;
+  beginOfWeek: Date;
 
   constructor(private sb: TimesheetSandbox,
               private route: Router) {}
 
   selectedWeek(selectedWeek) {
+    this.beginOfWeek = selectedWeek.start;
     this.sb.user$.subscribe(user => {
       if (!user) {
         this.route.navigate(['/login']);
