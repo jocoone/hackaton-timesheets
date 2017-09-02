@@ -34,4 +34,11 @@ public class ProjectServiceImpl implements ProjectService {
     public Project create(Project project) {
         return projectDao.save(project);
     }
+
+    @Override
+    public Project getByName(String projectName) {
+        return projectDao.findProjectByProjectName(projectName);
+    }
+
+
 }

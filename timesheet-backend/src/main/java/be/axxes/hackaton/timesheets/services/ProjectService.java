@@ -15,4 +15,6 @@ public interface ProjectService {
     List<Project> getProjectsByUserAndWeek(User user, Date fromDate, Date toDate);
 
     Project create(Project project);
+
+    Project getByName(String projectName);
 }

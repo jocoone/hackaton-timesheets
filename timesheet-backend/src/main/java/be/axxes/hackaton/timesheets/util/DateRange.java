@@ -36,6 +36,23 @@ public class DateRange {
         return  new DateRange(dateBeginWeek, dateEndWeek);
     }
 
+    public static DateRange forMonth(int year, int monthNumber){
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, monthNumber-1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        Date beginMonth = calendar.getTime();
+        calendar.set(Calendar.DAY_OF_MONTH, 31);
+        Date endMonth = calendar.getTime();
+
+        return new DateRange(beginMonth, endMonth);
+    }
+
     @Override
     public String toString() {
         return "DateRange{" +

@@ -8,6 +8,8 @@ import be.axxes.hackaton.timesheets.services.ActivityTypeService;
 import be.axxes.hackaton.timesheets.services.ProjectService;
 import be.axxes.hackaton.timesheets.services.UserService;
 import be.axxes.hackaton.timesheets.util.DateRange;
+import be.axxes.hackaton.timesheets.util.PdfWriterTimesheet;
+import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.Null;
 
 @CrossOrigin
 @RestController
@@ -75,4 +80,26 @@ public class ActivityController {
         return ResponseEntity.ok().build();
     }
 
+    @RequestMapping("/monthly")
+    public void getMonthlyActivities(@RequestParam final String username, @RequestParam final int year, @RequestParam final int monthNumber,  @RequestParam final String projectName){
+        Iterable<? extends Activity> activities;
+        if (projectName.isEmpty()){
+            activities = activityService.getNonBillableActivities(userService.getUserByUsername(username), DateRange.forMonth(year, monthNumber));
+        }
+        else{
+            activities = activityService.getActivitiesByProject(userService.getUserByUsername(username),
+                    DateRange.forMonth(year, monthNumber),
+                    projectService.getByName(projectName));
+        }
+
+
+        PdfWriterTimesheet pdfWriterTimesheet = new PdfWriterTimesheet();
+        try {
+            pdfWriterTimesheet.createPdf("timesheet.pdf", (Iterable<Activity>) activities);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+    }
 }

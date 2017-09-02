@@ -1,7 +1,6 @@
 package be.axxes.hackaton.timesheets.services;
 
-import be.axxes.hackaton.timesheets.model.Activity;
-import be.axxes.hackaton.timesheets.model.User;
+import be.axxes.hackaton.timesheets.model.*;
 import be.axxes.hackaton.timesheets.util.DateRange;
 
 public interface ActivityService {
@@ -9,4 +8,8 @@ public interface ActivityService {
      Activity create(Activity activity);
 
      void update(Activity activity);
+
+     Iterable<NonBillableActivity> getNonBillableActivities(User user, DateRange range);
+
+     Iterable<BillableActivity> getActivitiesByProject(User user, DateRange range, Project project);
 }

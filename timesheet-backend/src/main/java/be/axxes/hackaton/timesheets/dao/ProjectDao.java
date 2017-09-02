@@ -12,4 +12,6 @@ public interface ProjectDao extends CrudRepository<Project, Long>{
     List<Project> findProjectByUser(User user);
 
     List<Project> findProjectByUserAndStartDateLessThanEqualAndEndDateGreaterThanEqual(User user, Date dateEndWeek, Date dateStartWeek);
+
+    Project findProjectByProjectName(String projectName);
 }
